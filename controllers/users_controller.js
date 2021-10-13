@@ -1,9 +1,14 @@
-const User = require('../models/users');
+const User = require('../models/user');
 
 module.exports.profile = function(req, res){
-    return res.render('profile', {
-        title: 'User Profile'
-    });
+    // console.log(req.body.name);
+    // User.findOne({}, function(err, data){
+    //     console.log(data);
+        return res.render('profile', {
+            title: 'User Profile',
+            // user: data
+        });
+    // })
 }
 
 module.exports.signUp = function(req, res){
@@ -54,5 +59,11 @@ module.exports.create = function(req, res){
 
 // sign-in and create session for user
 module.exports.createSession = function(req, res){
+    return res.redirect('/');
+}
+
+module.exports.destroySession = function(req, res){
+    req.logout();
+
     return res.redirect('/');
 }

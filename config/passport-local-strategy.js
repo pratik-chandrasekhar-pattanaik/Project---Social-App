@@ -1,6 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const User = require('../models/users');
+const User = require('../models/user');
 
 // authentication using passport
 passport.use(new LocalStrategy({
@@ -35,7 +35,7 @@ passport.deserializeUser(function(id, done){
             return done(err);
         }
 
-        return done(null, user.id);
+        return done(null, user);
     })
 });
 
